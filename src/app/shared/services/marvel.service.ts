@@ -15,19 +15,22 @@ export class MarvelService {
   private ts = new Date().getTime();
   private stringToHash = this.ts + this.privateApiKey + this.publicApiKey;
   private hash = Md5.init(this.stringToHash);
-  private limit = 20;
+  private limit = 21;
   private marvelApiURL = 'https://gateway.marvel.com:443/v1/public/';
 
   constructor(private http: HttpClient) { }
 
   getAllCharacters():Observable<any>{
-    // tslint:disable-next-line: max-line-length
-    console.log(this.stringToHash, this.hash);
-    return this.http.get(this.marvelApiURL + 'characters?limit=' + this.limit + '&ts=' + this.ts + '&apikey=' + this.publicApiKey + '&hash=' + this.hash)
+    return this.http.get(this.marvelApiURL + 'characters?limit=3' + '&ts=' + this.ts + '&apikey=' + this.publicApiKey + '&hash=' + this.hash)
     .pipe(map(res => res))
     .pipe(catchError(error => this.errorHandler(error)));
   }
 
+  getCharacter = (id:number):Observable<any> => {
+    return this.http.get(this.marvelApiURL + "characters/" + `${id}` + "?limit="+ this.limit + '&ts=' + this.ts + '&apikey=' + this.publicApiKey + '&hash=' + this.hash)
+    .pipe(res => res)
+    .pipe(catchError(error => this.errorHandler(error)));
+  }
 
   private errorHandler = (error: HttpErrorResponse) => {
     return throwError(error.message || 'Server error');

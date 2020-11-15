@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { MarvelService } from '../../services/marvel.service';
 
 @Component({
@@ -13,7 +13,6 @@ export class MarvelHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCharacters();
-    
   }
 
   getCharacters(){
@@ -21,5 +20,4 @@ export class MarvelHomeComponent implements OnInit {
       this.characters = res.data.results;
     });
   }
-
 }

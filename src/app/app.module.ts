@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MarvelHomeComponent } from './shared/components/marvel-home/marvel-home.component';
+import { CardComponent } from './shared/components/card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MarvelHomeComponent
+    MarvelHomeComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
