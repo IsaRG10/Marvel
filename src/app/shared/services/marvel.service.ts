@@ -32,6 +32,12 @@ export class MarvelService {
     .pipe(catchError(error => this.errorHandler(error)));
   }
 
+  getAllComics = ():Observable<any> => {
+    return this.http.get(this.marvelApiURL + 'comics?limit=3' + '&ts=' + this.ts + '&apikey=' + this.publicApiKey + '&hash=' + this.hash)
+    .pipe(map(res => res))
+    .pipe(catchError(error => this.errorHandler(error)));
+  }
+
   private errorHandler = (error: HttpErrorResponse) => {
     return throwError(error.message || 'Server error');
   }

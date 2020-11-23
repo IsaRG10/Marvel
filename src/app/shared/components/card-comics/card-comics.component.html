@@ -1,17 +1,16 @@
 <div class="album py-5 bg-light">
-    <h2 class="navbar-dark bg-dark" style="color:white"><p style="padding-left: 45%;">Personajes</p></h2>
-    <marquee loop="1" style="margin-left: 100px;">
+    <h2 class="navbar-dark bg-dark" style="color:white"><p style="padding-left: 45%;">Comics</p></h2>
         <div class="container">
             <div class="row">
                 <div class="col-md-4" *ngFor="let item of items">
                     <div class="card mb-4 box-shadow" style="border:solid; box-shadow: 7px 12px grey;">
-                        <img class="card-img-top" [src]="item.thumbnail.path + '/landscape_large.' + item.thumbnail.extension"> 
+                        <img class="card-img-top" [src]="item.thumbnail.path + '/portrait_fantastic.' + item.thumbnail.extension">
                     <div class="card-body">
-                        <h2  style="cursor: pointer;">{{item.name}}</h2>
+                        <h2  style="cursor: pointer;">{{item.title}}</h2>
+                        <p>Paginas: {{item.pageCount}}</p>
                     </div>
                     </div>
                 </div>
             </div>
         </div>
-    </marquee>
 </div>
